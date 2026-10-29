@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# ---------------------------------------------------------------------------
+# Metadatos del proyecto
+# ---------------------------------------------------------------------------
+[project]
+name = "D-Difficulty"
+version = "0.1.0"                       # ← sincronízalo con __version__ si quieres
+description = "D — Difficulty. Una librería EXTREMADAMENTE difícil. Sin docs. Sin piedad."
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT" }
+authors = [{ name = "Anónimo", email = "nadie@example.com" }]
+keywords = ["difficulty", "puzzle", "obfuscation", "d", "sadico"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Games/Entertainment :: Puzzle Games",
+    "Intended Audience :: Developers",
+    "Typing :: Typed",
+]
+
+# Sin dependencias. La dificultad es toda tuya.
+dependencies = []
+
+[project.optional-dependencies]
+# Aunque no las uses, están aquí para confundir.
+test = ["pytest>=7"]
+dev  = ["pytest>=7", "build", "twine"]
+
+[project.urls]
+Homepage   = "https://example.com/D"
+Source     = "https://example.com/D.git"
+"Bug Tracker" = "https://example.com/D/issues"
+# Nota: no hay documentación a propósito.
+
+# ---------------------------------------------------------------------------
+# Configuración de setuptools: empaquetar D.py como módulo único
+# ---------------------------------------------------------------------------
+[tool.setuptools]
+py-modules = ["D"]                       # ← esto es lo que mete D.py en el wheel
+include-package-data = true
+
+[tool.setuptools.package-data]
+# nada: es un solo .py
+
+# ---------------------------------------------------------------------------
+# Opcional: chequeo de tipos
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.7"
+ignore_missing_imports = true
+# D no se puede tipar. Ni lo intentes.
+
+# ---------------------------------------------------------------------------
+# Opcional: pytest (aunque D.help() devuelve "No.")
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
